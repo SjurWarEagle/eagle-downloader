@@ -1,0 +1,17 @@
+version: '3.7'
+
+services:
+  eagle-downloader:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile
+#    ports:
+#      - "101:10100"
+    environment:
+      - SERVER_PORT=4065
+      - DISK_BASE_FOLDER=/data
+      - MINIO_SERVER_URL=http://localhost:9000
+      - MINIO_SERVER=/data
+    volumes:
+      -  e:/temp:/data
+    restart: unless-stopped
